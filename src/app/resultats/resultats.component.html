@@ -1,0 +1,22 @@
+<nav>
+    <a routerLink="" routerLinkActive="active">retour</a>
+</nav>
+<p>Resultats</p>
+
+<div class="grid">
+<div class="galerie"  *ngFor="let book of books">
+
+    <div class="card" (click)="onClick()" >
+
+
+
+        <span >{{book.Title}} <br> -{{book.Author}} <br> -{{book.PublishDate}}</span>
+
+        <img *ngIf="!clicked"  src="{{book.ImageUrl}}" alt="">
+
+
+    </div>
+</div>
+</div>
+
+<a class="gotop" href="#">up</a>>

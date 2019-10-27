@@ -1,0 +1,22 @@
+ 
+<!--div> 
+
+    <input type="text" [(ngModel)]="search" >
+    <button (click)="getSearch(search)">chercher</button>
+    
+  </div>
+  <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="rechercher" [(ngModel)]="search">
+      </mat-form-field>
+      <button (click)="getSearch(search)">chercher</button>
+    </form-->
+
+<body>
+  <div class="box">
+    
+      <input type="text" [(ngModel)]="search" placeholder="Bob, c'est pas un con. Il lit des bouquins">
+      <input type="submit" (click)="getSearch(search)" name="" value="GO !">
+    
+  </div>
+</body>

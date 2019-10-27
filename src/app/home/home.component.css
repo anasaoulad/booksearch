@@ -1,0 +1,106 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  }
+
+/*.gal{
+  width: 100vw;
+  height: 40vh;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  align-items: center;
+  align-content: stretch;
+  
+}
+
+mat-card{
+  text-overflow: hidden ;
+  overflow: ellipsis;
+  width: 24%;
+  height: 20vh;
+  padding: 3%;
+  margin: 1%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+mat-card-header{
+  text-overflow: ellipsis ;
+  
+  overflow: hidden;
+  width: 30vh;
+  height: 22vh;
+}
+img {
+  width: 7rem;
+  height: 10rem;
+  margin-left: 30%;
+  
+  
+
+}*/
+
+  /**************************************************************************
+div {
+  position: fixed;
+  margin: 300px;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}*/
+body{
+  margin: 0;
+  padding: 0;
+
+}
+.box
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  transform: translate(-50%,-50%);
+
+}
+input{
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  box-sizing: border-box;
+  transition: 0.9s;
+
+
+}
+input[type="text"]{
+  background: #fff;
+  width:410px;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding: 0 25px;
+  border-radius:25px 0 0 25px ;
+}
+
+input[type="submit"]{
+  width:150px;
+  height: 50px;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  background: #cf1515b4;
+  padding: 0 25px;
+  border-radius:0 25px 25px 0 ;
+}
+input[type="submit"]:hover{
+  background: #770c0cf3;
+  transform: translate(5%);
+}
