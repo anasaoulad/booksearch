@@ -20,9 +20,12 @@ export class ApiService {
   reSearch() {
     return this.search;
   }
+  clickedBook(book: Book) {
+    return book;
+  }
   getBooks(): Book[] {
     this.books = [];
-    const response = this.http.get<any>(this.url + 'test' + '&maxResults=40');
+    const response = this.http.get<any>(this.url + this.search + '&maxResults=40');
     // console.log(this.search);
     response.subscribe(res => {
       const books = res.items;
@@ -31,9 +34,23 @@ export class ApiService {
         const newBook = {
           Id: book.id,
           Title: book.volumeInfo.title,
+          Subtitle: book.volumeInfo.subtitle,
+          publisher: book.volumeInfo.publisher,
+          Description: book.volumeInfo.description,
           Author: book.volumeInfo.authors,
           ImageUrl: book.volumeInfo.imageLinks.thumbnail,
-          PublishDate: book.volumeInfo.publishedDate
+          PublishDate: book.volumeInfo.publishedDate,
+          PageCount: book.volumeInfo.pageCount,
+          // Height: book.volumeInfo.dimensions.height,
+          // Width: book.volumeInfo.dimensions.width,
+          // Thickness: book.volumeInfo.dimensions.thickness,
+          Category: book.volumeInfo.mainCategory,
+          Rating: book.volumeInfo.averageRating,
+          RatingCount: book.volumeInfo.ratingCount,
+          Language: book.volumeInfo.language,
+          PreviewLink: book.volumeInfo.previewLink,
+          PdfLink: book.accessInfo.pdf.downloadLink,
+          WebRead: book.accessInfo.webReaderLink
         };
 
         this.books.push(newBook);

@@ -1,22 +1,28 @@
-<nav>
-    <a routerLink="" routerLinkActive="active">retour</a>
-</nav>
-<p>Resultats</p>
+
+
+    <a  class="gotop" routerLink="" routerLinkActive="active"><i class="material-icons">
+            search
+            </i></a>
+
 
 <div class="grid">
-<div class="galerie"  *ngFor="let book of books">
 
-    <div class="card" (click)="onClick()" >
+    <div class="galerie" *ngFor="let book of books">
 
+        <div class="card" (click)="onClick(book)">
 
+            <span> <h5>{{book.Title}}</h5>
+                <h6 *ngIf="book.Author">by :{{book.Author}} </h6>
+                <h6 *ngIf="book.PageCount">Nombre de pages:{{book.PageCount}}</h6>
+                <h6 *ngIf="book.Rating"> votes {{book.Rating}}/5</h6>
+                <h6 *ngIf="book.PublishDate">{{book.PublishDate}} </h6> 
+            </span>
+            <img src="{{book.ImageUrl}}" alt="">
 
-        <span >{{book.Title}} <br> -{{book.Author}} <br> -{{book.PublishDate}}</span>
-
-        <img *ngIf="!clicked"  src="{{book.ImageUrl}}" alt="">
-
+        </div>
 
     </div>
-</div>
+
 </div>
 
-<a class="gotop" href="#">up</a>>
+>

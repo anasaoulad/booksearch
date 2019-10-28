@@ -1,13 +1,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Book } from '../book';
-import { FormsModule, NgForm, NgModel } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { ApiService } from '../api.service';
-import { MatCardModule } from '@angular/material/card';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { ResultatsComponent } from '../resultats/resultats.component';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'adz-home',
   templateUrl: './home.component.html',

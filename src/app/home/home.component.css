@@ -1,8 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
-
-body{
+body {
   font-family: 'Open Sans', sans-serif;
-  }
+}
 
 /*.gal{
   width: 100vw;
@@ -43,7 +42,7 @@ img {
 
 }*/
 
-  /**************************************************************************
+/**************************************************************************
 div {
   position: fixed;
   margin: 300px;
@@ -57,50 +56,50 @@ div {
 .example-full-width {
   width: 100%;
 }*/
-body{
+
+body {
   margin: 0;
   padding: 0;
-
 }
-.box
-{
+
+.box {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 40%;
   width: 700px;
-  transform: translate(-50%,-50%);
-
+  transform: translate(-50%, -50%);
 }
-input{
+
+input {
   position: relative;
   display: inline-block;
   font-size: 20px;
   box-sizing: border-box;
   transition: 0.9s;
-
-
 }
-input[type="text"]{
+
+input[type="text"] {
   background: #fff;
-  width:410px;
+  width: 410px;
   height: 50px;
   border: none;
   outline: none;
   padding: 0 25px;
-  border-radius:25px 0 0 25px ;
+  border-radius: 25px 0 0 25px;
 }
 
-input[type="submit"]{
-  width:150px;
+input[type="submit"] {
+  width: 150px;
   height: 50px;
   position: relative;
   border: none;
   cursor: pointer;
   background: #cf1515b4;
   padding: 0 25px;
-  border-radius:0 25px 25px 0 ;
+  border-radius: 0 25px 25px 0;
 }
-input[type="submit"]:hover{
+
+input[type="submit"]:hover {
   background: #770c0cf3;
   transform: translate(5%);
 }

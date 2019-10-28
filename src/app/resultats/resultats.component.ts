@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
-import { FormsModule, NgForm, NgModel } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
 import { ApiService } from '../api.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
+import { preserveWhitespacesDefault } from '@angular/compiler';
 @Component({
   selector: 'adz-resultats',
   templateUrl: './resultats.component.html',
@@ -14,8 +13,8 @@ export class ResultatsComponent implements OnInit {
   books: Book[];
   search = '';
   clicked = false;
-  constructor(private apiService: ApiService) { }
-
+  constructor(private apiService: ApiService, public dialog: MatDialog) { }
+dialogConfig = new MatDialogConfig();
   ngOnInit() {
     this.books = this.apiService.getBooks();
     this.search = this.apiService.reSearch();
@@ -24,7 +23,13 @@ export class ResultatsComponent implements OnInit {
     this.apiService.getSearch(this.search);
     console.log(this.books);
   }
-onClick() {
-  this.clicked = !this.clicked;
-}
+  onClick(book: Book) {
+    this.apiService.clickedBook(book);
+    console.log(book);
+    this.dialog.open(DialogComponent, {
+      width: '500px',
+      data: this.apiService.clickedBook(book),
+      panelClass: 'Dialog'
+    });
+  }
 }
