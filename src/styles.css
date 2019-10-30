@@ -45,3 +45,7 @@ body {
 .Dialog .mat-dialog.content {
     text-decoration: none;
 }
+.mat-select-panel{
+    background:rgba(223, 116, 102, 1);
+}
+

@@ -9,23 +9,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class HomeComponent implements OnInit {
-  // name = 'recherche des livres';
+
   books: Book[];
   search = '';
 
   constructor(private apiService: ApiService, private activateroute: ActivatedRoute, private router: Router) {
-    // console.log(this.search);
+
   }
 
   ngOnInit() {
-    // this.books = this.apiService.getBooks();
-    //  console.log(this.search);
-    console.log(this.books);
-    // this.search = this.apiService.getSearch(this.search);
-    // this.search = '';
+
   }
-  getSearch() {
-    this.apiService.getSearch(this.search);
+  setSearch() {
+    this.apiService.setSearch(this.search);
     console.log(this.search);
     this.router.navigate(['/resultats']);
   }

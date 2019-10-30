@@ -1,9 +1,29 @@
+<nav>
 
+    <a class="gohome" routerLink="" routerLinkActive="active">
+        chercher un autre ?
+        <i class="material-icons">search </i>
+    </a>
 
-    <a  class="gotop" routerLink="" routerLinkActive="active"><i class="material-icons">
-            search
-            </i></a>
+    <div class="filter">
+        
+        <mat-form-field>
+            <mat-select panelClass="select" placeholder="par Auteurs">
+                <mat-option *ngFor="let book of books" [value]="book.Author">
+                    <h4>{{book.Author}}</h4>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select panelClass="select" placeholder="par Categorie">
+                <mat-option *ngFor="let book of books" [value]="book.Category">
+                    <h4>{{book.Category}}</h4>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
 
+    </div>
+</nav>
 
 <div class="grid">
 
@@ -11,18 +31,18 @@
 
         <div class="card" (click)="onClick(book)">
 
-            <span> <h5>{{book.Title}}</h5>
+            <span>
+                <h5>{{book.Title}}</h5>
                 <h6 *ngIf="book.Author">by :{{book.Author}} </h6>
-                <h6 *ngIf="book.PageCount">Nombre de pages:{{book.PageCount}}</h6>
-                <h6 *ngIf="book.Rating"> votes {{book.Rating}}/5</h6>
-                <h6 *ngIf="book.PublishDate">{{book.PublishDate}} </h6> 
+                <h6 *ngIf="book.PublishDate">{{book.PublishDate}} </h6>
+                <h6 *ngIf="book.Category">{{book.Category}} </h6>
             </span>
             <img src="{{book.ImageUrl}}" alt="">
 
         </div>
 
     </div>
+    <button (click)="onClickPage(41)"></button>
 
 </div>
 
->

@@ -1,13 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-// import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { from} from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ResultatsComponent } from './resultats/resultats.component';
@@ -16,6 +14,8 @@ import { SimplebarAngularModule } from 'simplebar-angular';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,6 @@ import { DialogComponent } from './dialog/dialog.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // HttpClient,
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
@@ -36,7 +35,8 @@ import { DialogComponent } from './dialog/dialog.component';
     MatInputModule,
     SimplebarAngularModule,
     MatDialogModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSelectModule
 
   ],
   providers: [],

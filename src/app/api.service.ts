@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
-import { map } from 'rxjs/operators';
 import { Book } from './book';
 
 @Injectable({
@@ -14,7 +12,7 @@ export class ApiService {
   private url = 'https://www.googleapis.com/books/v1/volumes?q=';
   constructor(private http: HttpClient, ) {
   }
-  getSearch(search: string) {
+  setSearch(search: string) {
     this.search = search;
   }
   reSearch() {
@@ -25,32 +23,75 @@ export class ApiService {
   }
   getBooks(): Book[] {
     this.books = [];
-    const response = this.http.get<any>(this.url + this.search + '&maxResults=40');
-    // console.log(this.search);
+    const query = this.search === '' ? 'test' : this.search;
+    const response = this.http.get<any>( this.url + query + '&maxResults=40' );
     response.subscribe(res => {
+
       const books = res.items;
 
       books.forEach(book => {
         const newBook = {
-          Id: book.id,
-          Title: book.volumeInfo.title,
-          Subtitle: book.volumeInfo.subtitle,
-          publisher: book.volumeInfo.publisher,
-          Description: book.volumeInfo.description,
           Author: book.volumeInfo.authors,
-          ImageUrl: book.volumeInfo.imageLinks.thumbnail,
-          PublishDate: book.volumeInfo.publishedDate,
-          PageCount: book.volumeInfo.pageCount,
-          // Height: book.volumeInfo.dimensions.height,
-          // Width: book.volumeInfo.dimensions.width,
-          // Thickness: book.volumeInfo.dimensions.thickness,
-          Category: book.volumeInfo.mainCategory,
-          Rating: book.volumeInfo.averageRating,
-          RatingCount: book.volumeInfo.ratingCount,
+          Category: book.volumeInfo.categories,
+          Description: book.volumeInfo.description,
+          // Height: book.volumeInfo.dimensions ? book.volumeInfo.dimensions.height : undefined,
+          Id: book.id,
+         // ImageUrl: book.volumeInfo.imageLinks.thumbnail,
+          ImageUrl: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : undefined,
           Language: book.volumeInfo.language,
-          PreviewLink: book.volumeInfo.previewLink,
+          PageCount: book.volumeInfo.pageCount,
           PdfLink: book.accessInfo.pdf.downloadLink,
-          WebRead: book.accessInfo.webReaderLink
+          PreviewLink: book.volumeInfo.previewLink,
+          PublishDate: book.volumeInfo.publishedDate,
+          Publisher: book.volumeInfo.publisher,
+          Rating: book.volumeInfo.averageRating,
+          RatingsCount: book.volumeInfo.ratingCount,
+          SubTitle: book.volumeInfo.subtitle,
+          // Thickness: book.volumeInfo.dimensions.thickness,
+          Title: book.volumeInfo.title,
+          WebRead: book.accessInfo.webReaderLink,
+          PdfDispo: book.accessInfo.pdf.isAvailable
+          // Width: book.volumeInfo.dimensions.width
+        };
+
+        this.books.push(newBook);
+      });
+
+    });
+
+    return this.books;
+  }
+  getNumberBooks(num: number): Book[] {
+    this.books = [];
+    const query = this.search === '' ? 'test' : this.search;
+    const response = this.http.get<any>( this.url + query + '&maxResults=40&startIndex=' + num );
+    response.subscribe(res => {
+
+      const books = res.items;
+
+      books.forEach(book => {
+        const newBook = {
+          Author: book.volumeInfo.authors,
+          Category: book.volumeInfo.categories,
+          Description: book.volumeInfo.description,
+          // Height: book.volumeInfo.dimensions ? book.volumeInfo.dimensions.height : undefined,
+          Id: book.id,
+         // ImageUrl: book.volumeInfo.imageLinks.thumbnail,
+          ImageUrl: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : undefined,
+          Language: book.volumeInfo.language,
+          PageCount: book.volumeInfo.pageCount,
+          PdfLink: book.accessInfo.pdf.downloadLink,
+          PreviewLink: book.volumeInfo.previewLink,
+          PublishDate: book.volumeInfo.publishedDate,
+          Publisher: book.volumeInfo.publisher,
+          Rating: book.volumeInfo.averageRating,
+          RatingsCount: book.volumeInfo.ratingCount,
+          SubTitle: book.volumeInfo.subtitle,
+          // Thickness: book.volumeInfo.dimensions.thickness,
+          Title: book.volumeInfo.title,
+          WebRead: book.accessInfo.webReaderLink,
+          PdfDispo: book.accessInfo.pdf.isAvailable
+          // Width: book.volumeInfo.dimensions.width
         };
 
         this.books.push(newBook);
