@@ -1,15 +1,15 @@
 div{
 
-    background-color: rgba(196, 18, 18, 0);
+    background-color: rgba(42, 42, 42, 1);
     max-height: 70vh;
    
-    color: rgba(226, 74, 68, 1);
+    color: white;
 }
 .info {
    font-size: 12px;
 }
 .link {
-    background-color: rgba(226, 74, 68, 1);
+    background-color:rgba(102, 102, 102, 1); 
     border: none;
     color: white;
     padding: 10px 20px;

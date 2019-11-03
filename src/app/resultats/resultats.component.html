@@ -1,22 +1,24 @@
 <nav>
-
     <a class="gohome" routerLink="" routerLinkActive="active">
         chercher un autre ?
         <i class="material-icons">search </i>
     </a>
 
     <div class="filter">
-        
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Filtrer" [(ngModel)]="filtre.Author" (input)="onChange()" >
+        </mat-form-field>
         <mat-form-field>
-            <mat-select panelClass="select" placeholder="par Auteurs">
-                <mat-option *ngFor="let book of books" [value]="book.Author">
+
+            <mat-select panelClass="select" [(value)]="authSelect" placeholder="par Auteurs">
+                <mat-option *ngFor="let book of ktab" [value]="book.Author">
                     <h4>{{book.Author}}</h4>
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <mat-select panelClass="select" placeholder="par Categorie">
-                <mat-option *ngFor="let book of books" [value]="book.Category">
+            <mat-select panelClass="select" [(value)]="catSelect" placeholder="par Categorie">
+                <mat-option *ngFor="let book of ktab" [value]="book.Category">
                     <h4>{{book.Category}}</h4>
                 </mat-option>
             </mat-select>
@@ -27,7 +29,7 @@
 
 <div class="grid">
 
-    <div class="galerie" *ngFor="let book of books">
+    <div class="galerie" *ngFor="let book of ktab">
 
         <div class="card" (click)="onClick(book)">
 
@@ -42,7 +44,5 @@
         </div>
 
     </div>
-    <button (click)="onClickPage(41)"></button>
-
+    <!--button (click)="onClickPage(40)"></button-->
 </div>
-

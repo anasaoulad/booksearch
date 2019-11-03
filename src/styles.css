@@ -10,11 +10,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-image: url(./back3.webp);
+    background: rgb(241,235,235);
+background: linear-gradient(90deg, rgba(241,235,235,1) 0%, rgba(255,255,255,1) 100%);
+    /*background-image: url(./background.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
+*/}
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -22,12 +24,12 @@ body {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background: rgba(208, 198, 190, 1);
+    background: rgba(42, 42, 42, 1); 
     
 }
 
 .mat-dialog-container {
-    background-color: rgba(208, 198, 190, 1);
+    background-color: rgba(42, 42, 42, 1);
     height: 100%;
     display: grid;
     grid-column: 1fr 2fr;
@@ -35,7 +37,7 @@ body {
 
 .mat-dialog-container ::-webkit-scrollbar-thumb {
     border-radius: 6px;
-    background: rgba(226, 74, 68, 1);
+    background:  rgba(102, 102, 102, 1);
 }
 
 .mat-dialog-container ::-webkit-scrollbar {
@@ -46,6 +48,6 @@ body {
     text-decoration: none;
 }
 .mat-select-panel{
-    background:rgba(223, 116, 102, 1);
+    background:rgba(42, 42, 42, 1); 
 }
 

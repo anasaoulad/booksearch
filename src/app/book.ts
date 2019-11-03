@@ -1,4 +1,4 @@
-export interface Book {
+export class Book {
   Author?: string;
   Category?: string;
   Description?: string;
@@ -20,3 +20,7 @@ export interface Book {
   Width?: string;
   PdfDispo?: boolean;
 }
+export interface Total {
+  TotalBooks: number;
+}
+
