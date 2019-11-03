@@ -151,9 +151,4 @@ export class ResultatsComponent implements OnInit {
       panelClass: 'Dialog'
     });
   }
-
-  /*onClickPage(num: number) {
-    this.books = this.apiService.getNumberBooks(num);
-  }*/
-
 }
