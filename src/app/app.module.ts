@@ -23,7 +23,7 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     HomeComponent,
     ResultatsComponent,
     DialogComponent,
-    JwPaginationComponent
+    JwPaginationComponent,
   ],
   entryComponents: [DialogComponent],
   imports: [

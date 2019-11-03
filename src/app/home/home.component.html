@@ -3,7 +3,7 @@
   <div class="box">
     <form #recherche (ngSubmit)="recherche">
 
-      <input type="text" name="recherche" tabindex="1" [(ngModel)]="search"
+      <input type="text" required name="recherche" tabindex="1" [(ngModel)]="search"
         placeholder="Bob, c'est pas un con. Il lit des bouquins">
       <input type="submit" tabindex="-1"  (click)="setSearch(search)" name="button" value="GO !">
 

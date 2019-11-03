@@ -24,7 +24,5 @@ this.apiService.viderBook();
   setSearch() {
     this.apiService.setSearch(this.search);
     this.router.navigate(['/resultats']);
-   // this.total = this.apiService.getTotalBooks();
-   // this.books = this.apiService.getBooks();
   }
 }

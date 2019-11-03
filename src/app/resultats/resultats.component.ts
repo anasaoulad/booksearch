@@ -16,18 +16,32 @@ export class ResultatsComponent implements OnInit {
 
 
   constructor(private apiService: ApiService, public dialog: MatDialog) { }
-  filtre: Book = new Book();
-  books: Book[];
   search = '';
+  filter: Book = new Book();
   catSelect: string;
   authSelect: string;
-  inputField = '';
-  booksWithAuthor: Book[];
   dialogConfig = new MatDialogConfig();
-  ktab: Array<Book> = [];
-
+  Book: Array<Book> = [];
+  author = '';
+  page: string;
   async ngOnInit() {
-    await (this.apiService.getKtab()).subscribe(
+    this.Book = [];
+    this.apiService.getAuthor(this.author);
+    if (this.author === '') {
+      this.onLoad();
+      console.log(this.author);
+    }
+    if (this.author !== '') {
+      this.onChange();
+      console.log(this.author);
+    }
+    // this.books = this.apiService.getBooks();
+    // console.log(this.books);
+    // this.booksWithAuthor = this.books.filter(book => book.Author !== '');
+  }
+  onLoad() {
+    this.Book = [];
+    (this.apiService.getBook()).subscribe(
       data => {
         data.items.forEach(
           book => {
@@ -36,9 +50,9 @@ export class ResultatsComponent implements OnInit {
               Author: book.volumeInfo.authors,
               Category: book.volumeInfo.categories,
               Description: book.volumeInfo.description,
-              // Height: book.volumeInfo.dimensions ? book.volumeInfo.dimensions.height : undefined,
-              // Thickness: book.volumeInfo.dimensions.thickness,
-              // Width: book.volumeInfo.dimensions.width
+              Height: book.volumeInfo.dimensions ? book.volumeInfo.dimensions.height : undefined,
+              Thickness: book.volumeInfo.dimensions ? book.volumeInfo.dimensions.thickness : undefined,
+              Width: book.volumeInfo.dimensions ? book.volumeInfo.dimensions.width : undefined,
               Id: book.id,
               ImageUrl: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : undefined,
               Language: book.volumeInfo.language,
@@ -55,7 +69,7 @@ export class ResultatsComponent implements OnInit {
               PdfDispo: book.accessInfo.pdf.isAvailable,
 
             };
-            this.ktab.push(newBook);
+            this.Book.push(newBook);
           }
         );
       },
@@ -70,23 +84,65 @@ export class ResultatsComponent implements OnInit {
       }
     );
 
-    console.log(this.ktab);
-    // this.books = this.apiService.getBooks();
-    // console.log(this.books);
-    // this.booksWithAuthor = this.books.filter(book => book.Author !== '');
-    /* const time = new Observable<string>((observer: Observer<string>) => {
-       setInterval(() => observer.next(new Date().toString()), 1000);
-     });
-    // const soreted = this.bookByAuthor(this.books);
-    // const pdfDispo = this.books.filter(z => this.book.PdfDispo);
-    // console.log(pdfDispo);
-    // this.booksWithAuthor = this.books.filter( book => book.Author !== undefined );
-  }*/}
+    console.log(this.Book);
 
-  onChange() {
-    this.books = this.books.filter(res => { res.Author.toLocaleLowerCase().match(this.inputField.toLocaleLowerCase()); });
-    console.log(this.inputField);
+  }
+  setPage(data) {
+    this.page = data;
+  }
+  onClickPage() {
+    this.apiService.getPage(this.page);
     this.ngOnInit();
+  }
+  onAuthor() {
+    this.apiService.getAuthor(this.author);
+    this.ngOnInit();
+  }
+  onChange() {
+    this.apiService.getAuthor(this.author);
+    console.log(this.author);
+    (this.apiService.getBookWithAuthor()).subscribe(
+      data => {
+        data.items.forEach(
+          book => {
+            const newBook = {
+
+              Author: book.volumeInfo.authors,
+              Category: book.volumeInfo.categories,
+              Description: book.volumeInfo.description,
+              Height: book.volumeInfo.dimensions ? book.volumeInfo.dimensions.height : undefined,
+              Thickness: book.volumeInfo.dimensions ? book.volumeInfo.dimensions.thickness : undefined,
+              Width: book.volumeInfo.dimensions ? book.volumeInfo.dimensions.width : undefined,
+              Id: book.id,
+              ImageUrl: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : undefined,
+              Language: book.volumeInfo.language,
+              PageCount: book.volumeInfo.pageCount,
+              PdfLink: book.accessInfo.pdf.downloadLink,
+              PreviewLink: book.volumeInfo.previewLink,
+              PublishDate: book.volumeInfo.publishedDate,
+              Publisher: book.volumeInfo.publisher,
+              Rating: book.volumeInfo.averageRating,
+              RatingsCount: book.volumeInfo.ratingCount,
+              SubTitle: book.volumeInfo.subtitle,
+              Title: book.volumeInfo.title,
+              WebRead: book.accessInfo.webReaderLink,
+              PdfDispo: book.accessInfo.pdf.isAvailable,
+
+            };
+            this.Book.push(newBook);
+          }
+        );
+      },
+      (error) => {
+
+        console.error();
+
+      },
+      () => {
+
+        console.log('done from rs');
+      }
+    );
   }
   onClick(book: Book) {
     this.dialog.open(DialogComponent, {
@@ -95,6 +151,7 @@ export class ResultatsComponent implements OnInit {
       panelClass: 'Dialog'
     });
   }
+
   /*onClickPage(num: number) {
     this.books = this.apiService.getNumberBooks(num);
   }*/
