@@ -2,7 +2,7 @@
 
 - Configuration du Select pour selectionné les categories correctement. 
 - L'ajout de la pagination pour afficher plus de résultats.
-- Reglage du probleme de CORS origin pour que le site fonctionne correctement sur google Chrome.
+- Réglage du problème de CORS origin pour que le site fonctionne correctement sur google Chrome.
 
 # Booksearsh
 
