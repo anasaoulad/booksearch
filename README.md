@@ -1,3 +1,4 @@
+still have to add a select item and pagination buttons
 # Booksearsh
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.14.
