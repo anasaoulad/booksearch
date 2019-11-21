@@ -1,4 +1,4 @@
-vous pouvez consultez le site sur le lien suivant:
+vous pouvez consultez le site sur le lien suivant: ( ne fonctionne pas sur google chrome essaiyer avec firefox )
 http://booksearsh.eb2a.com/
 
 ## Ce qui manque / à faire prochainement
