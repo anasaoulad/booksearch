@@ -1,3 +1,5 @@
+vous pouvez consultez le site sur le lien suivant:
+http://booksearsh.eb2a.com/
 
 ## Ce qui manque / à faire prochainement
 - Réglage du problème de CORS origin pour que le site fonctionne correctement sur google Chrome.
