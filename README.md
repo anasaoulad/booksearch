@@ -1,4 +1,4 @@
-
+vous pouvez consultez le site sur la page web suivante http://booksearsh.byethost7.com/
 
 ## Ce qui manque / à faire prochainement
 - Réglage du problème de CORS origin pour que le site fonctionne correctement sur google Chrome.
